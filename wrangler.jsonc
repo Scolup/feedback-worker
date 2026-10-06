@@ -1,0 +1,24 @@
+// Cloudflare Workers config (JSONC: standard JSON + comments).
+// Docs: https://developers.cloudflare.com/workers/wrangler/configuration/
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "scolup-feedback-worker",
+  "main": "src/index.ts",
+  "compatibility_date": "2025-09-01",
+
+  // D1 database holding the feedback.
+  // Create it with:  wrangler d1 create scolup-feedback
+  // then paste the printed database_id below.
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "scolup-feedback",
+      "database_id": "b2840acd-14e7-4325-b40d-d8d9509e2287",
+      "migrations_dir": "migrations"
+    }
+  ],
+
+  "observability": {
+    "enabled": true
+  }
+}
